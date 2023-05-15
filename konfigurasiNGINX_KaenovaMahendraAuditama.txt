@@ -1,0 +1,18 @@
+limit_req_zone $binary_remote_addr zone=backend_lim:10m rate=6r/m;
+
+server {
+  server_name localhost;
+  listen 3000;
+
+  error_page 503 /503;
+
+  location / {
+    limit_req zone=backend_lim;
+
+    proxy_pass http://localhost:8000;
+  }
+
+  location /503 {
+    return 200 "Kelimit gan";
+  }
+}

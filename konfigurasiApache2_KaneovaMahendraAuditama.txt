@@ -1,0 +1,7 @@
+<VirtualHost *:3000>
+  ProxyPass "/"  "http://localhost:8000/"
+
+	ServerAdmin kaenova@gmail.com
+	ServerName localhost
+	ServerAlias localhost:3000
+</VirtualHost>
